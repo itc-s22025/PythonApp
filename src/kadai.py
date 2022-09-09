@@ -13,8 +13,6 @@ class Pillow:
 		self.Pillow_img = Image.open(io.BytesIO(requests.get(Pb.Pimage1).content))
 		self.Pillow_draw = ImageDraw.Draw(self.Pillow_img)
 		self.Pillow_font = ImageFont.truetype('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',20)
-	#	for i,s in enumerate(text):
-	#		y = i*20
 		self.Pillow_draw.text((6,16), text, fill=(245,245,245), font=self.Pillow_font)
 		self.Pillow_draw.text((6,250), '「五行小説もどきジェネレータ」', fill=(245,245,245), font=self.Pillow_font)
 		print('画像を生成しています...')
@@ -26,13 +24,8 @@ class Pixabay:
 		self.Pbase = 'https://pixabay.com/api/?key=' 
 		self.Pkey = '29451301-ec4c613c485d788191898b0f0'
 		self.Pq = '/&q='
-#		self.Pcol = '&colors='
 		self.Pcolors = 'black'
 		self.Pmin = '&min_width=640'
-#		self.Psens = []
-#		for _ in range(5):
-#			self.Psens.append(Ts.sen)
-	#	print(self.Psens)
 		if '緑' in Ts.sen:
 			self.Pcolors = 'green'
 		elif '赤' in Ts.sen:
@@ -45,7 +38,6 @@ class Pixabay:
 			self.Pcolors = 'blue'
 
 		self.Purl = f'{self.Pbase}{self.Pkey}{self.Pq}%27{self.Pcolors}%27+%27{Ts.n}%27{self.Pmin}'
-#		print(self.Purl)
 
 		self.Pres = requests.get(self.Purl)
 		self.Pjson_data = json.loads(self.Pres.content)
@@ -56,7 +48,6 @@ class Pixabay:
 #		self.Pd = webbrowser.open_new_tab(self.Pimage1)
 		print('画像を生成しています...')
 		Pl.create_img()
-#		print(self.Pimage1)
 
 
 class TextSuggest:
@@ -79,7 +70,6 @@ class TextSuggest:
 			self.texts.append(self.word)
 
 		for n in self.texts:
-			#self.n = choice(self.texts)
 			self.url = f'{self.base}{self.key}{self.pre}{n}'
 			self.urls.append(self.url)
 
